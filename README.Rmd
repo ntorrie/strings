@@ -22,7 +22,7 @@ repo <- "centre-for-marine-applied-research/strings"
 
 # strings: DRAFT README
 
-CHANGE FOR NICOLE TO PULL FROM UPSTREAM
+CHANGE FOR NICOLE TO PULL FROM UPSTREAM - NTEDITS
 
 <!-- badges: start -->
 
