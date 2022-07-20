@@ -60,7 +60,14 @@ are measured every 1 minute to 1 hour, depending on the sensor.
 
 [](https://github.com/Centre-for-Marine-Applied-Research/strings/blob/master/man/figures/README-fig1.png)
 
-<img src="https://github.com/Centre-for-Marine-Applied-Research/strings/blob/master/man/figures/README-fig1.png" title="\label{fig:figs} Figure 1: Typical sensor string" alt="\label{fig:figs} Figure 1: Typical sensor string" width="65%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="https://github.com/Centre-for-Marine-Applied-Research/strings/blob/master/man/figures/README-fig1.png" alt="\label{fig:figs} Figure 1: Typical sensor string" width="65%" />
+<p class="caption">
+Figure 1: Typical sensor string
+</p>
+
+</div>
 
 After retrieval, data from each sensor is exported to a separate csv
 file using manufacturer-specific software. Each type of sensor generates
@@ -80,37 +87,54 @@ the accepted sensors (Table 1). Refer to the vignettes for more detail.
 <thead>
 <tr>
 <th style="text-align:left;">
-SENSORS
-</th>
-<th style="text-align:left;">
-urls
-</th>
-<th style="text-align:left;">
 Sensor (link to spec sheet)
+</th>
+<th style="text-align:left;">
+Variable(s) Measured
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-HOBO Pro V2
-</td>
-<td style="text-align:left;">
-<https://www.onsetcomp.com/datasheet/U22-001>
-</td>
-<td style="text-align:left;">
 [HOBO Pro V2](https://www.onsetcomp.com/datasheet/U22-001)
+</td>
+<td style="text-align:left;">
+Temperature
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-HOBO DO
-</td>
-<td style="text-align:left;">
-<https://www.onsetcomp.com/datasheet/U26-001>
-</td>
-<td style="text-align:left;">
 [HOBO DO](https://www.onsetcomp.com/datasheet/U26-001)
+</td>
+<td style="text-align:left;">
+Temperature, Dissolved Oxygen
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[aquaMeasure
+DOT](https://www.innovasea.com/wp-content/uploads/2021/07/Innovasea-Aquaculture-Intelligence-Spec-Sheet-062221.pdf)
+</td>
+<td style="text-align:left;">
+Temperature, Dissolved Oxygen
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[aquaMeasure
+SAL](https://www.innovasea.com/wp-content/uploads/2021/07/Innovasea-Aquaculture-Intelligence-Spec-Sheet-062221.pdf)
+</td>
+<td style="text-align:left;">
+Temperature, Salinity
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[VR2AR](https://www.innovasea.com/wp-content/uploads/2021/06/Innovasea-Fish-Tracking-vr2ar-data-sheet-0621.pdf)
+</td>
+<td style="text-align:left;">
+Temperature
 </td>
 </tr>
 </tbody>
@@ -138,7 +162,7 @@ three sensors:
 Sensor
 </th>
 <th style="text-align:center;">
-Serial #
+Serial \#
 </th>
 <th style="text-align:center;">
 Depth
@@ -194,36 +218,35 @@ path <- system.file("extdata", package = "strings")
 
 hobo_raw <- read_csv(paste0(path, "/HOBO/10755220.csv"))
 #> New names:
-#> * `` -> ...4
 #> Rows: 3408 Columns: 8
-#> -- Column specification --------------------------------------------------------
-#> Delimiter: ","
-#> chr (3): Date Time, GMT+00:00, Stopped (LGR S/N: 10755220), End Of File (LGR...
-#> dbl (2): #, Temp, °C (LGR S/N: 10755220, SEN S/N: 10755220)
-#> lgl (3): ...4, Coupler Attached (LGR S/N: 10755220), Host Connected (LGR S/N...
-#> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> ── Column specification
+#> ──────────────────────────────────────────────────────── Delimiter: "," chr
+#> (3): Date Time, GMT+00:00, Stopped (LGR S/N: 10755220), End Of File (LGR... dbl
+#> (2): #, Temp, °C (LGR S/N: 10755220, SEN S/N: 10755220) lgl (3): ...4, Coupler
+#> Attached (LGR S/N: 10755220), Host Connected (LGR S/N...
+#> ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+#> Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> • `` -> `...4`
 
 aquaMeasure_raw <- read_csv(paste0(path, "/aquaMeasure/aquaMeasure-670364_2019-10-19_UTC.csv"))
 #> Rows: 8482 Columns: 5
-#> -- Column specification --------------------------------------------------------
+#> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ","
 #> chr (3): Timestamp(UTC), Sensor, Record Type
 #> dbl (2): Dissolved Oxygen, Temperature
 #> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 vemco_raw <-  read_csv(paste0(path, "/Vemco/Vemco_Borgles_Island_2019_05_30.csv"))
 #> Rows: 2322 Columns: 4
-#> -- Column specification --------------------------------------------------------
+#> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ","
 #> chr (3): Date and Time (UTC), Receiver, Description
 #> dbl (1): Data
 #> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 Examine the first rows of each raw data file:
@@ -232,39 +255,44 @@ Raw Hobo data
 
 ``` r
 head(hobo_raw)
-#> # A tibble: 6 x 8
-#>     `#` `Date Time, GMT+00:00` `Temp, °C (LGR S/N: 1~ ...4  `Coupler Attached (~
-#>   <dbl> <chr>                                   <dbl> <lgl> <lgl>               
-#> 1     1 2019-05-30 18:00                        12.2  NA    NA                  
-#> 2     2 2019-05-30 19:00                         7.87 NA    NA                  
-#> 3     3 2019-05-30 20:00                         6.58 NA    NA                  
-#> 4     4 2019-05-30 21:00                         6.66 NA    NA                  
-#> 5     5 2019-05-30 22:00                         6.66 NA    NA                  
-#> 6     6 2019-05-30 23:00                         7.29 NA    NA                  
-#> # ... with 3 more variables: Host Connected (LGR S/N: 10755220) <lgl>,
-#> #   Stopped (LGR S/N: 10755220) <chr>, End Of File (LGR S/N: 10755220) <chr>
+#> # A tibble: 6 × 8
+#>     `#` `Date Time, GMT+00:00` Temp, °C …¹ ...4  Coupl…² Host …³ Stopp…⁴ End O…⁵
+#>   <dbl> <chr>                        <dbl> <lgl> <lgl>   <lgl>   <chr>   <chr>  
+#> 1     1 2019-05-30 18:00             12.2  NA    NA      NA      <NA>    <NA>   
+#> 2     2 2019-05-30 19:00              7.87 NA    NA      NA      <NA>    <NA>   
+#> 3     3 2019-05-30 20:00              6.58 NA    NA      NA      <NA>    <NA>   
+#> 4     4 2019-05-30 21:00              6.66 NA    NA      NA      <NA>    <NA>   
+#> 5     5 2019-05-30 22:00              6.66 NA    NA      NA      <NA>    <NA>   
+#> 6     6 2019-05-30 23:00              7.29 NA    NA      NA      <NA>    <NA>   
+#> # … with abbreviated variable names
+#> #   ¹​`Temp, °C (LGR S/N: 10755220, SEN S/N: 10755220)`,
+#> #   ²​`Coupler Attached (LGR S/N: 10755220)`,
+#> #   ³​`Host Connected (LGR S/N: 10755220)`, ⁴​`Stopped (LGR S/N: 10755220)`,
+#> #   ⁵​`End Of File (LGR S/N: 10755220)`
 ```
 
 Raw aquaMeasure data
 
 ``` r
 head(aquaMeasure_raw)
-#> # A tibble: 6 x 5
-#>   `Timestamp(UTC)`        Sensor     `Record Type`  `Dissolved Oxyg~ Temperature
-#>   <chr>                   <chr>      <chr>                     <dbl>       <dbl>
-#> 1 352s after startup (ti~ aquaMeasu~ Dissolved Oxy~             101.          NA
-#> 2 1691s after startup (t~ aquaMeasu~ Dissolved Oxy~             100.          NA
-#> 3 3015s after startup (t~ aquaMeasu~ Dissolved Oxy~             100.          NA
-#> 4 4346s after startup (t~ aquaMeasu~ Dissolved Oxy~             101.          NA
-#> 5 5690s after startup (t~ aquaMeasu~ Dissolved Oxy~             101.          NA
-#> 6 364s after startup (ti~ aquaMeasu~ Dissolved Oxy~             101.          NA
+#> # A tibble: 6 × 5
+#>   `Timestamp(UTC)`                   Sensor             Record…¹ Disso…² Tempe…³
+#>   <chr>                              <chr>              <chr>      <dbl>   <dbl>
+#> 1 352s after startup (time not set)  aquaMeasure-670364 Dissolv…    101.      NA
+#> 2 1691s after startup (time not set) aquaMeasure-670364 Dissolv…    100.      NA
+#> 3 3015s after startup (time not set) aquaMeasure-670364 Dissolv…    100.      NA
+#> 4 4346s after startup (time not set) aquaMeasure-670364 Dissolv…    101.      NA
+#> 5 5690s after startup (time not set) aquaMeasure-670364 Dissolv…    101.      NA
+#> 6 364s after startup (time not set)  aquaMeasure-670364 Dissolv…    101.      NA
+#> # … with abbreviated variable names ¹​`Record Type`, ²​`Dissolved Oxygen`,
+#> #   ³​Temperature
 ```
 
 Raw Vemco data
 
 ``` r
 head(vemco_raw)
-#> # A tibble: 6 x 4
+#> # A tibble: 6 × 4
 #>   `Date and Time (UTC)` Receiver     Description  Data
 #>   <chr>                 <chr>        <chr>       <dbl>
 #> 1 2019-05-30 20:00      VR2AR-547109 Temperature   4.2
@@ -303,13 +331,12 @@ ALL_data <- compile_all_data(
   depth.vemco = depth.vemco
 )
 #> New names:
-#> * `` -> ...4
-#> * `` -> ...5
-#> * `` -> ...6
-#> * `` -> ...7
-#> * `` -> ...8
 #> New names:
-#> * `` -> ...4
+#> • `` -> `...4`
+#> • `` -> `...5`
+#> • `` -> `...6`
+#> • `` -> `...7`
+#> • `` -> `...8`
 #> [1] "HOBO data compiled"
 #> [1] "found Temperature in file aquaMeasure-670364_2019-10-19_UTC.csv"     
 #> [2] "found Dissolved Oxygen in file aquaMeasure-670364_2019-10-19_UTC.csv"
@@ -317,21 +344,22 @@ ALL_data <- compile_all_data(
 #> [1] "Vemco data compiled: Temperature"
 
 head(tibble(ALL_data), n = 10)
-#> # A tibble: 10 x 8
-#>    TIMESTAMP.x    PLACEHOLDER.x   TIMESTAMP.x.x   PLACEHOLDER.x.x  TIMESTAMP.y  
-#>    <chr>          <chr>           <chr>           <chr>            <chr>        
-#>  1 2019-May-30 t~ 2019-May-30 to~ 2019-May-30 to~ 2019-May-30 to ~ 2019-May-30 ~
-#>  2 HOBO-10755220  HOBO-10755220   aquaMeasure-67~ aquaMeasure-670~ aquaMeasure-~
-#>  3 Temperature-2m Temperature-2m  Temperature-5m  Temperature-5m   Dissolved Ox~
-#>  4 Date Time, GM~ Temp, °C        Timestamp(UTC)  Temperature      Timestamp(UT~
-#>  5 2019-05-30 18~ 12.243          2019-05-30 01:~ 5.5              2019-05-30 0~
-#>  6 2019-05-30 19~ 7.87            2019-05-30 04:~ 5.6              2019-05-30 0~
-#>  7 2019-05-30 20~ 6.585           2019-05-30 07:~ 5.92             2019-05-30 0~
-#>  8 2019-05-30 21~ 6.661           2019-05-30 11:~ 5.88             2019-05-30 1~
-#>  9 2019-05-30 22~ 6.661           2019-05-30 14:~ 6.26             2019-05-30 1~
-#> 10 2019-05-30 23~ 7.293           2019-05-30 18:~ 12.62            2019-05-30 1~
-#> # ... with 3 more variables: PLACEHOLDER.y <chr>, TIMESTAMP.y.y <chr>,
-#> #   PLACEHOLDER.y.y <chr>
+#> # A tibble: 10 × 8
+#>    TIMESTAMP.x           PLACE…¹ TIMES…² PLACE…³ TIMES…⁴ PLACE…⁵ TIMES…⁶ PLACE…⁷
+#>    <chr>                 <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>  
+#>  1 2019-May-30 to 2019-… 2019-M… 2019-M… 2019-M… 2019-M… 2019-M… 2019-M… 2019-M…
+#>  2 HOBO-10755220         HOBO-1… aquaMe… aquaMe… aquaMe… aquaMe… VR2AR-… VR2AR-…
+#>  3 Temperature-2m        Temper… Temper… Temper… Dissol… Dissol… Temper… Temper…
+#>  4 Date Time, GMT+00:00  Temp, … Timest… Temper… Timest… Dissol… Date a… Temper…
+#>  5 2019-05-30 18:00:00   12.243  2019-0… 5.5     2019-0… 103     2019-0… 4.2    
+#>  6 2019-05-30 19:00:00   7.87    2019-0… 5.6     2019-0… 103.4   2019-0… 4.6    
+#>  7 2019-05-30 20:00:00   6.585   2019-0… 5.92    2019-0… 99.3    2019-0… 4.6    
+#>  8 2019-05-30 21:00:00   6.661   2019-0… 5.88    2019-0… 102     2019-0… 4.6    
+#>  9 2019-05-30 22:00:00   6.661   2019-0… 6.26    2019-0… 104.3   2019-0… 4.7    
+#> 10 2019-05-30 23:00:00   7.293   2019-0… 12.62   2019-0… 109.7   2019-0… 4.6    
+#> # … with abbreviated variable names ¹​PLACEHOLDER.x, ²​TIMESTAMP.x.x,
+#> #   ³​PLACEHOLDER.x.x, ⁴​TIMESTAMP.y, ⁵​PLACEHOLDER.y, ⁶​TIMESTAMP.y.y,
+#> #   ⁷​PLACEHOLDER.y.y
 ```
 
 The data is compiled in a “wide” format, with metadata in the first four
@@ -355,15 +383,16 @@ ALL_tidy <- convert_to_tidydata(ALL_data)
 
 
 head(tibble(ALL_tidy))
-#> # A tibble: 6 x 6
-#>   DEPLOYMENT_PERIOD          SENSOR    TIMESTAMP           VARIABLE  DEPTH VALUE
-#>   <chr>                      <chr>     <dttm>              <chr>     <ord> <dbl>
-#> 1 2019-May-30 to 2019-Oct-19 HOBO-107~ 2019-05-30 18:00:00 Temperat~ 2     12.2 
-#> 2 2019-May-30 to 2019-Oct-19 HOBO-107~ 2019-05-30 19:00:00 Temperat~ 2      7.87
-#> 3 2019-May-30 to 2019-Oct-19 HOBO-107~ 2019-05-30 20:00:00 Temperat~ 2      6.58
-#> 4 2019-May-30 to 2019-Oct-19 HOBO-107~ 2019-05-30 21:00:00 Temperat~ 2      6.66
-#> 5 2019-May-30 to 2019-Oct-19 HOBO-107~ 2019-05-30 22:00:00 Temperat~ 2      6.66
-#> 6 2019-May-30 to 2019-Oct-19 HOBO-107~ 2019-05-30 23:00:00 Temperat~ 2      7.29
+#> # A tibble: 6 × 6
+#>   DEPLOYMENT_PERIOD          SENSOR      TIMESTAMP           VARIA…¹ DEPTH VALUE
+#>   <chr>                      <chr>       <dttm>              <chr>   <ord> <dbl>
+#> 1 2019-May-30 to 2019-Oct-19 HOBO-10755… 2019-05-30 18:00:00 Temper… 2     12.2 
+#> 2 2019-May-30 to 2019-Oct-19 HOBO-10755… 2019-05-30 19:00:00 Temper… 2      7.87
+#> 3 2019-May-30 to 2019-Oct-19 HOBO-10755… 2019-05-30 20:00:00 Temper… 2      6.58
+#> 4 2019-May-30 to 2019-Oct-19 HOBO-10755… 2019-05-30 21:00:00 Temper… 2      6.66
+#> 5 2019-May-30 to 2019-Oct-19 HOBO-10755… 2019-05-30 22:00:00 Temper… 2      6.66
+#> 6 2019-May-30 to 2019-Oct-19 HOBO-10755… 2019-05-30 23:00:00 Temper… 2      7.29
+#> # … with abbreviated variable name ¹​VARIABLE
 ```
 
 `ALL_tidy` as 6 columns:
